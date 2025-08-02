@@ -27,35 +27,42 @@ O frontend da Intellistor permite:
 
 ## 📦 Instalação
 
+### 1. Clone o repositório
 ```bash
-1. Clone o repositório
 git clone https://github.com/seu-usuario/intellistor-frontend.git
 cd intellistor-frontend
+```
 
-2. Instale as dependências
+### 2. Instale as dependências
+```bash
 npm install
-# ou
+ou
 yarn install
+```
 
-3. Configure as variáveis de ambiente
+### 3. Configure as variáveis de ambiente
 Crie um arquivo .env com a URL do backend:
+```bash
 VITE_API_URL=http://localhost:8000
+```
 
-4. Execute o projeto localmente
+### 4. Execute o projeto localmente
+```bash
 npm run dev
-# ou
+ou
 yarn dev
+```
 
-5. A aplicação estará disponível em:
+### 5. A aplicação estará disponível em:
+```bash
 http://localhost:5173
 ````
-
 ---
 
 ## 🐳 Executar com Docker
 
-### - Crie um Dockerfile com o seguinte conteúdo:
-
+### 1. Crie um Dockerfile com o seguinte conteúdo:
+```bash
 FROM node:18-alpine
 WORKDIR /app
 COPY . .
@@ -63,8 +70,10 @@ RUN npm install
 RUN npm run build
 EXPOSE 80
 CMD ["npx", "serve", "dist"]
+```
 
-### - Crie um docker-compose.yml com o seguinte conteúdo:
+### 2. Crie um docker-compose.yml com o seguinte conteúdo:
+```bash
 version: '3.8'
 
 services:
@@ -74,23 +83,28 @@ services:
       - "3000:80"
     env_file:
       - .env
+```
 
-### - Execute com o seguinte comando: 
-
+### 3. Execute com o seguinte comando: 
+```bash
 docker-compose up --build
+```
 
 ---
 
 ## 🔗 Integração com o Backend
 
 Certifique-se de que o backend esteja rodando e acessível na URL definida em VITE_API_URL. Exemplo de chamada com Axios:
-
+```bash
 axios.get(`${import.meta.env.VITE_API_URL}/storages`)
+```
 
 ---
 
 ## 🧪 Testes: 
+```bash
 npm run test
+```
 
 ---
 ## 📄 Licença
