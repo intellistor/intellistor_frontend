@@ -4187,45 +4187,50 @@ input, select, textarea {
 .carousel {
   position: relative;
   overflow: hidden;
+  width: 100%;
   max-width: 100%;
-  height: 200px; /* altura padrão para logos */
-  margin-bottom: 2rem;
+  margin: 2rem auto;
+  height: auto;
 }
 
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  height: 100%;
+  gap: 0; /* sem espaço entre slides */
 }
 
 .carousel-slide {
-  min-width: 100%; /* mostra 4 logos por vez */
-  padding: 0;     /* remove padding extra */
+  flex: 0 0 50%; /* 2 por vez, ou use 25% p/ 4 */
   box-sizing: border-box;
-  height: 100%;
+  padding: 1rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
-.carousel-slide.logo-slide img {
-  max-height: 160px;
+.carousel-slide img {
+  max-height: 120px;
+  height: auto;
   width: auto;
   object-fit: contain;
-  margin: 0 20px;
+}
+
+.carousel-slide p {
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 .carousel-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
-  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
   border: none;
-  font-size: 2rem;
-  cursor: pointer;
+  font-size: 1.5rem;
   padding: 0.5rem 1rem;
-  z-index: 1;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .carousel-button.prev { left: 10px; }
