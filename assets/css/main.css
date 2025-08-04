@@ -4184,6 +4184,9 @@ input, select, textarea {
   50% { transform: translateX(-50%) translateY(-10px); }
 }
 
+
+/* Carousel */
+
 .carousel {
   position: relative;
   overflow: hidden;
@@ -4200,12 +4203,13 @@ input, select, textarea {
 }
 
 .carousel-slide {
-  flex: 0 0 50%; /* 2 por vez, ou use 25% p/ 4 */
+  min-width: 100%; /* mostra 4 logos por vez */
+  padding: 0;     /* remove padding extra */
   box-sizing: border-box;
-  padding: 1rem;
+  height: 100%;
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-slide img {
@@ -4218,6 +4222,7 @@ input, select, textarea {
 .carousel-slide p {
   font-size: 0.9rem;
   margin: 0;
+  line-height: 1.3; /* ou experimente 1.2, 1.1 se quiser mais compacto */
 }
 
 .carousel-button {
@@ -4232,6 +4237,23 @@ input, select, textarea {
   cursor: pointer;
   z-index: 10;
 }
+
+.carousel-slide > div {
+  margin-left: 1rem; /* ou ajuste para 1.5rem, 2rem se quiser mais espaço */
+}
+
+.carousel-services {
+  padding-left: 1rem; /* espaçamento à esquerda da lista */
+  margin: 0.5rem 0 0 0;
+  list-style-type: disc; /* ou 'none' se preferir sem bolinhas */
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.carousel-services li {
+  margin-bottom: 0.3rem; /* controla o espaçamento entre itens */
+}
+
 
 .carousel-button.prev { left: 10px; }
 .carousel-button.next { right: 10px; }
