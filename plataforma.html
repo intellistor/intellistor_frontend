@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intellistor Platform</title>
+  <style>
+    :root {
+      --intellistor-blue: #1e2d3d;
+      --intellistor-orange: #f57c00;
+      --intellistor-bg: #f4f6f8;
+      --intellistor-text: #2a2a2a;
+      --intellistor-gray: #cccccc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--intellistor-bg);
+      display: flex;
+      min-height: 100vh;
+      color: var(--intellistor-text);
+    }
+
+    aside {
+      width: 260px;
+      background-color: var(--intellistor-blue);
+      color: #ffffff;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu-title {
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: bold;
+      color: var(--intellistor-orange);
+    }
+
+    ul.menu {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.menu > li {
+      padding: 0.9rem 1rem;
+      margin: 0.3rem 0;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    ul.menu > li:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .submenu {
+      list-style: none;
+      margin-left: 0.5rem;
+      margin-top: 0.3rem;
+      display: none;
+      padding-left: 0.5rem;
+    }
+
+    .submenu li {
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border-left: 2px solid var(--intellistor-orange);
+      color: #dddddd;
+    }
+
+    .menu-item.open + .submenu {
+      display: block;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    header {
+      background: white;
+      color: var(--intellistor-blue);
+      padding: 1rem 2rem;
+      font-size: 1.6rem;
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+    }
+
+    nav {
+      display: flex;
+      background: #e6edf2;
+      border-bottom: 1px solid #ccc;
+    }
+
+    nav button {
+      padding: 1rem 1.5rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--intellistor-text);
+    }
+
+    nav button.active {
+      background-color: var(--intellistor-blue);
+      color: white;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      border-left: 5px solid var(--intellistor-blue);
+    }
+
+    .chart-placeholder {
+      height: 150px;
+      background: linear-gradient(to right, #d2e3f4, #e7f0fc);
+      border-radius: 5px;
+      margin-top: 1rem;
+    }
+
+    .centered-logo {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--intellistor-orange);
+      opacity: 0.15;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    li.menu-item {
+      position: relative;
+    }
+
+    li.menu-item::after {
+      content: "▼";
+      position: absolute;
+      right: 1rem;
+      font-size: 0.7rem;
+      opacity: 0.5;
+    }
+
+    li.menu-item.open::after {
+      content: "▲";
+    }
+    .main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('images/principal.png'); /* substitua pelo caminho da sua imagem */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.50; /* ajuste conforme necessário */
+  z-index: 0;
+}
+
+.main > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <aside>
+    <div>
+      <ul class="menu">
+        <li>HOME</li>
+
+        <ul class="menu">
+          <li class="menu-item" onclick="toggleSubmenu(this)">Dashboard</li>
+          <ul class="submenu">
+            <li>Painel de LUNs</li>
+            <li>Malha de SAN</li>
+            <li>Capacidade de Storage</li>
+          </ul>
+        </ul>
+
+        <ul class="menu">
+          <li class="menu-item" onclick="toggleSubmenu(this)">Cadastro de ICs</li>
+          <ul class="submenu">
+            <li>Storages</li>
+            <li>Switches</li>
+            <li>Clusters</li>
+          </ul>
+
+          <li class="menu-item" onclick="toggleSubmenu(this)">Alocação de LUNs</li>
+          <ul class="submenu">
+            <li>Discover</li>
+            <li>GAD</li>
+            <li>GPFS</li>
+            <li>STANDALONE</li>
+          </ul>
+
+          <li class="menu-item" onclick="toggleSubmenu(this)">vMotion de Servidores</li>
+          <ul class="submenu">
+            <li>Adcionar Servidor</li>
+            <li>Remover Servidor</li>
+            <li>vMotion Completo</li>
+          </ul>
+
+          <li class="menu-item" onclick="toggleSubmenu(this)">FinOps</li>
+          <ul class="submenu">
+            <li>Custo por Cluster</li>
+            <li>Crescimento por Cluster</li>
+            <li>Cloud</li>
+            <li>On-Premise</li>
+          </ul>
+
+          <li class="menu-item" onclick="toggleSubmenu(this)">Backup</li>
+          <ul class="submenu">
+            <li>Ativos</li>
+            <li>Políticas</li>
+            <li>Associações</li>
+            <li>Restore</li>
+          </ul>
+
+          <li>Auditoria</li>
+        </ul>
+
+      </ul>
+    </div>
+
+    <div style="text-align: center; font-size: 0.8rem; opacity: 0.5;">
+      © 2025 Intellistor
+    </div>
+  </aside>
+
+  <div class="main">
+    <header  id="header">
+      Intellistor Platform
+    </header>
+
+    <!--<nav>
+      <button class="active">Dashboard</button>
+      <button>Armazenamento</button>
+      <button>Malha de SAN</button>
+      <button>Relatórios</button>
+    </nav>-->
+
+  </div>
+
+  <script>
+    function toggleSubmenu(el) {
+      el.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
