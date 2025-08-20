@@ -117,11 +117,13 @@ Este projeto está licenciado sob a MIT License – veja em [licença](#)
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
 
 ---
-## 📬 Contato
+## ✉️ Contato
 
-Para dúvidas, sugestões ou parcerias, entre em contato:
-- Renato – renato@email.com (substitua pelo seu e-mail)
-- [Linkedin](https://www.linkedin.com/in/renatodicmachado/)
+Em caso de dúvidas, sugestões ou contribuições, entre em contato com os responsáveis pelo projeto:
 
+- **Eloi Salton** — [e-mail](mailto:eloi.externo@petacorp.com.br)
+- **Renato de Carvalho Machado** — [e-mail](mailto:renato.externo@petacorp.com.br)
+
+---
 
 
